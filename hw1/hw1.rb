@@ -67,6 +67,31 @@ p rps_game_winner([[ "Alfie", "P" ], [ "Clancy", "P" ]])
 puts
 
 # Problem 2.b
+def rps_tournament_winner(tournament)
+  if (tournament[0][0].class == String)
+    rps_game_winner(tournament)
+  else
+    rps_game_winner([rps_tournament_winner(tournament[0]), rps_tournament_winner(tournament[1])])
+  end
+end
+
+rps_tournament_1 = [
+  [
+   [ ["Armando", "P"], ["Dave", "S"] ], 
+   [ ["Richard", "R"], ["Michael", "S"] ], 
+  ], 
+  [
+   [ ["Allen", "S"], ["Omer", "P"] ],
+   [ ["David E.", "R"], ["Richard X.", "P"] ]
+  ]
+] 
+rps_tournament_2 = [[["Sarah", "S"], ["Pablo", "P"]], [["John", "R"], ["Peter", "P"]]]
+rps_tournament_3 = [[["Sarah", "S"], ["Pablo", "P"]], [["John", "R"]]]
+p rps_tournament_winner(rps_tournament_1)
+p rps_tournament_winner(rps_tournament_2)
+# Game with error (wrong number of players), uncomment to test
+# p rps_tournament_winner(rps_tournament_3)
+puts
 
 # Problem 3 (Almudena said doing it with group_by is okay)
 def combine_anagrams(words)
